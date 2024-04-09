@@ -9,6 +9,7 @@ import Header from './Components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UserOtp from './Pages/UserOtp'
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
       <Route path='/' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/dashboard' element={<Dash/>}/>
+      <Route path='/otp' element={<UserOtp/>}/>
+
       <Route path='*' element={<Err/>}/>
 
      </Routes>

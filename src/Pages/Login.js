@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import '../Styles/mix.css';
 import { toast, ToastContainer } from 'react-toastify';
-const Login = () => {
 
+const Login = () => {
     const [email, setEmail] = useState("");
-    console.log(email);
+    const navigate = useNavigate(); // Call useNavigate inside the component body
+
     const sendotp = async (e) => {
         e.preventDefault();
         if (email === "") {
@@ -31,7 +32,15 @@ const Login = () => {
                     }
                     throw new Error('Failed to send otp. Please try again later');
                 }
-                toast.success("Otp Sent Successfully");
+                if (response.status === 200) {
+                   toast.success("OTP Sent Successfully")
+                   setTimeout(()=>{
+                    navigate('/otp',{state:email})
+
+                   },5000)
+                   
+                }
+
             } catch (error) {
                 console.error(error);
             }
